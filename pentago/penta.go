@@ -10,8 +10,8 @@ type Piece int
 
 const (
 	Empty Piece = iota
-	Black
 	White
+	Black
 )
 
 // Board represents the state of the board in a Pentago game.
