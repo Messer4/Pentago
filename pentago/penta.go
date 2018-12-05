@@ -80,8 +80,8 @@ func (b Board) setTriple(start Coord, deltaR int, deltaC int, triple [3]Piece) {
 }
 
 const (
-	Clockwise = iota
-	CounterClockwise
+	CounterClockwise = iota
+	Clockwise
 )
 
 // Rotate rotates one of the sub-boards, using a 0-based row and column (subRow and subCol are each
