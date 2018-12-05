@@ -38,6 +38,17 @@ func CreateUser(writer http.ResponseWriter, router *http.Request) {
 		writer.Write([]byte("500 - Cannot create user."))
 		return
 	}
+	js, err := json.Marshal(map[string]interface{}{
+		"status": true,
+	})
+	if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)
+		return
+	}
+
+	w.Header().Set("Content-Type", "application/json")
+	w.Write(js)
+	return
 
 }
 
