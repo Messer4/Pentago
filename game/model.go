@@ -67,7 +67,7 @@ func SetGame(value Game) error {
 
 func CreateGame(p GameParams) (Game, error) {
 	game := Game{
-		Id:      rand.Int(),
+		Id:      rand.Intn(1000),
 		Mode:p.Mode,
 		Players: [2]int{p.UserId, 0},
 		Board: pentago.NewBoard(),
