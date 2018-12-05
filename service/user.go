@@ -86,6 +86,7 @@ func Login(w http.ResponseWriter, r *http.Request) {
 
 	js, err := json.Marshal(map[string]interface{}{
 		"status": true,
+		"id": selectedUser.Id,
 	})
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusInternalServerError)
