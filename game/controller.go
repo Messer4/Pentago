@@ -93,6 +93,7 @@ func MoveHandler(writer http.ResponseWriter, router *http.Request) {
 
 	err := decoder.Decode(&params)
 	if err != nil {
+		log.Println(err)
 		writer.WriteHeader(http.StatusUnprocessableEntity)
 		writer.Write([]byte("422 - Cannot read the request's body."))
 		return
