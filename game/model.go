@@ -9,6 +9,7 @@ import (
 	"fmt"
 	"PentagoServer/db"
 	"log"
+	"time"
 )
 
 type Game struct {
@@ -129,6 +130,7 @@ func Move(m MoveParams) (Game, error) {
 		log.Print("AI Move: ",aiMove.String())
 		log.Print("Board: \n",game.Board.String())
 		log.Print("\n");
+		time.Sleep(1*time.Second);
 	}
 
 	errSet := SetGame(game)
