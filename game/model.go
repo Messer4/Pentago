@@ -8,6 +8,7 @@ import (
 	"PentagoServer/pentago"
 	"fmt"
 	"PentagoServer/db"
+	"log"
 )
 
 type Game struct {
@@ -104,7 +105,7 @@ func Move(m MoveParams) (Game, error) {
 	if m.Position[0] < 0 || m.Position[0] > 5 || m.Position[1] < 0 || m.Position[1] > 5 {
 		return game, errors.New("The marble is outside the board.")
 	}
-
+	log.Print("Quarter: ",m.Quarter)
 	userMove := pentago.NewMove(m.Position[0],m.Position[1],m.Quarter,m.Direction)
 
 	if !userMove.IsValid(game.Board) {
@@ -128,6 +129,7 @@ func Move(m MoveParams) (Game, error) {
 	if errSet != nil {
 		return game, errSet
 	}
-
+	log.Print("Move: ",userMove.String())
+	log.Print("Board: \n",game.Board.String())
 	return game, nil
 }

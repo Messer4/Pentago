@@ -3,6 +3,7 @@ package pentago
 
 import (
 	"bytes"
+	"fmt"
 )
 
 // Piece represents the color of the piece. It can also be Empty, meaning no piece.
@@ -182,10 +183,10 @@ func NewMove(r, c, sub, dir int) Move {
 }
 
 // String returns the move in a human-readable form.
-//func (m Move) String() string {
-//	var directions = map[int]string{Clockwise: "CW", CounterClockwise: "CCW"}
-//	return fmt.Sprintf("Put piece (%d, %d), rotate subboard %d %s", m.r, m.c, m.sub, directions[m.dir])
-//}
+func (m Move) String() string {
+	var directions = map[int]string{Clockwise: "CW", CounterClockwise: "CCW"}
+	return fmt.Sprintf("Put piece (%d, %d), rotate subboard %d %s", m.R, m.C, m.Sub, directions[m.Dir])
+}
 
 // IsValid returns whether the move is valid.
 func (m Move) IsValid(b Board) bool {
@@ -213,7 +214,7 @@ func (b Board) ApplyMove(m Move, color Piece) bool {
 	if b[m.R][m.C] != Empty {
 		return false
 	}
-	b[m.C][m.C] = color
+	b[m.R][m.C] = color
 	b.Rotate(m.Sub / 2, m.Sub % 2, m.Dir)
 	return true
 }
