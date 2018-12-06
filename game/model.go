@@ -116,6 +116,9 @@ func Move(m MoveParams) (Game, error) {
 	if !ok{
 		return game, fmt.Errorf("Wrong move")
 	}
+	log.Print("Move: ",userMove.String())
+	log.Print("Board: \n",game.Board.String())
+	log.Print("\n");
 
 	if game.Mode == "ai" {
 		aiMove := game.Board.BestMove(game.Turn)
@@ -123,13 +126,15 @@ func Move(m MoveParams) (Game, error) {
 		if !ok{
 			return game, fmt.Errorf("Wrong move")
 		}
+		log.Print("AI Move: ",aiMove.String())
+		log.Print("Board: \n",game.Board.String())
+		log.Print("\n");
 	}
 
 	errSet := SetGame(game)
 	if errSet != nil {
 		return game, errSet
 	}
-	log.Print("Move: ",userMove.String())
-	log.Print("Board: \n",game.Board.String())
+
 	return game, nil
 }

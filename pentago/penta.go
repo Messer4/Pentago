@@ -245,3 +245,16 @@ func (g *Game) Move(m Move) bool {
 	}
 	return true
 }
+
+//int[] topL = new int[2];
+//int[] topR = new int[2];
+//int[] botR = new int[2];
+//int[] botL = new int[2];
+//topL[0] = index * 3;
+//topL[1] = index * 3;
+//botL[0] = topL[0] + 2;
+//botL[1] = topL[1];
+//botR[0] = botL[0];
+//botR[1] = botL[1] + 1;
+//topR[0] = topL[0];
+//topR[1] = topL[1] + 2;
